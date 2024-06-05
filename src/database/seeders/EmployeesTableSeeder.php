@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class EmployeesTableSeeder extends Seeder
 {
@@ -17,35 +18,35 @@ class EmployeesTableSeeder extends Seeder
         $employees = [
             'name' => 'テスト太郎',
             'email' => 'test1@example.com',
-            'password' => 'taro1'
+            'password' => Hash::make('taro1')
         ];
         DB::table('employees')->insert($employees);
 
         $employees = [
             'name' => 'テスト次郎',
             'email' => 'test2@example.com',
-            'password' => 'jiro2'
+            'password' => Hash::make ('jiro2')
         ];
         DB::table('employees')->insert($employees);
 
         $employees = [
             'name' => 'テスト三郎',
             'email' => 'test3@example.com',
-            'password' => 'saburo3'
+            'password' => Hash::make ('saburo3')
         ];
         DB::table('employees')->insert($employees);
 
         $employees = [
             'name' => 'テスト四郎',
             'email' => 'test4@example.com',
-            'password' => 'shiro4'
+            'password' => Hash::make ('shiro4')
         ];
         DB::table('employees')->insert($employees);
 
         $employees = [
             'name' => 'テスト五郎',
             'email' => 'test5@example.com',
-            'password' => 'goro5'
+            'password' => Hash::make ('goro5')
         ];
         DB::table('employees')->insert($employees);
     }
