@@ -18,6 +18,4 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 Route::get('/',[AttendanceController::class,'showStamp']);
-Route::get('/login',[AttendanceController::class, 'showLoginForm']);
-Route::get('/register',[AttendanceController::class,'showRegisterForm']);
 Route::get('/attendance',[AttendanceController::class,'showAttendance']);

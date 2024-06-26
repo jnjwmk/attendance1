@@ -1,0 +1,48 @@
+.login-form__group {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.login-form__input {
+    width: 350px;
+    padding: 10px 0;
+    margin: 10px;
+    border: 2px solid #9b9999c9;
+    border-radius: 4px;
+    background-color: #e6e6e600;
+}
+
+::placeholder {
+    padding-left: 10px;
+    color: #838181;
+}
+
+.login-btn {
+    width: 350px;
+    padding: 10px 0;
+    margin-top: 10px;
+    background-color: blue;
+    border: none;
+    border-radius: 2px;
+    color: #fff;
+}
+
+.login-form__register {
+    width: 350px;
+    margin-top: 40px;
+    justify-content: center;
+}
+
+p {
+    text-align: center;
+    padding: 0 35px;
+    color: #838181;
+}
+
+.login-form__register-link {
+    display: inline-block;
+    text-decoration: none;
+    color: blue;
+    margin-left: 150px;
+}

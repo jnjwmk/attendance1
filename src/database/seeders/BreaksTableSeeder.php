@@ -18,7 +18,8 @@ class BreaksTableSeeder extends Seeder
         $attendances = DB::table('attendances')->get();
 
         foreach ($attendances as $attendance){
-            $breakStart = Carbon::createFromTime();
+            $breakStart = Carbon::createFromTime(0,30,0);
+            
         }
     }
 }
