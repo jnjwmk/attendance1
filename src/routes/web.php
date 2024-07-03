@@ -14,8 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 Route::get('/',[AttendanceController::class,'showStamp']);
 Route::get('/attendance',[AttendanceController::class,'showAttendance']);

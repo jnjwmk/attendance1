@@ -9,20 +9,33 @@
     <h4 class="register-form__heading content__heading">会員登録</h4>
 
     <div class="register-form__inner">
-        <form class="register-form__form" action="/" method="post">
+        <form class="register-form__form" action="/register" method="post">
             @csrf
             <div class="register-form__group">
-                <input class="register-form__input" type="text" name="name" placeholder="名前"></input>
+                <input class="register-form__input" type="text" name="name" value="{{ old ('name')}}" placeholder="名前"></input>
+                @error ('name')
+                {{ $message}}
+                @enderror
             </div>
+
             <div class="register-form__group">
-                <input class="register-form__input" type="text" name="email" placeholder="メールアドレス"></input>
+                <input class="register-form__input" type="text" name="email" value="{{ old ('email')}}" placeholder="メールアドレス"></input>
+                @error ('email')
+                {{ $message}}
+                @enderror
             </div>
+
             <div class="register-form__group">
                 <input class="register-form__input" type="text" name="password" placeholder="パスワード"></input>
+                @error ('password')
+                {{ $message}}
+                @enderror
             </div>
+
             <div class="register-form__group">
                 <input class="register-form__input" type="text" name="confirm-password" placeholder="確認用パスワード"></input>
             </div>
+
             <div class="register-form__group">
                 <button class="register-btn" action="/" type="submit">会員登録</button>
             </div>

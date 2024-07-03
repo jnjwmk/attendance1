@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Breaks extends Model
 {
     use HasFactory;
+
+    protected $guarded = [
+        'id',
+    ];
+
+    public function attendance()
+    {
+        return $this->belongsTo(Attendance::class);
+    }
 }

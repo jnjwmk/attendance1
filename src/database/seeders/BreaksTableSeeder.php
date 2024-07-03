@@ -15,11 +15,26 @@ class BreaksTableSeeder extends Seeder
      */
     public function run()
     {
+        // attendanceテーブルから全ての出勤データを取得
         $attendances = DB::table('attendances')->get();
 
         foreach ($attendances as $attendance){
-            $breakStart = Carbon::createFromTime(0,30,0);
-            
+            $workStart = Carbon::parse($attendance->work_start_time);
+            $workEnd = Carbon::parse($attendance->work_end_time);
+
+            $breakStart = $workStart->copy()->addMinutes();
+            // ランダムな休憩の長さ(30分から60分)
+            $breakEnd = $breakStart->copy()->addMinutes(rand(30,60));
+
+            // 休憩時間をデータベースに挿入
+            DB::table('breaks')->insert([
+                'attendance_id' => $attendance->id,
+                'break_start_time' => $breakStart->toTimeString(),
+                'break_end_time' => $breakEnd->toTimeString(),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
         }
     }
 }
+
