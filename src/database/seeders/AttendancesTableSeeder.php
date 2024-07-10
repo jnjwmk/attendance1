@@ -30,15 +30,5 @@ class AttendancesTableSeeder extends Seeder
 
             ]);
         }
-
-        // $attendances = [
-        //     'employee_id' => $employee->id,
-        //     'date' => $specificDate->toDateString(),
-        //     'work_start_time' => '10:00:00',
-        //     'work_end_time' => '20:00:00'
-        // ];
-        // DB::table('attendances')->insert($attendances);
-
-
     }
 }

@@ -15,3 +15,21 @@
     </ul>
 </nav>
 @endsection('nav')
+
+@section('main')
+<div class="attendance">
+    <div class="name-message">
+        <h2>原田美優さんお疲れ様です！</h2>
+    </div>
+
+    <div class="attendance-stamp">
+        <input class="attendance-stamp__item" type="button" name="start" value="勤怠開始">
+
+        <input class="attendance-stamp__item" type="button" name="end" value="勤怠終了">
+
+        <input class="attendance-stamp__item" type="button" name="break-start" value="休憩開始">
+
+        <input class="attendance-stamp__item" type="button" name="break-end" value="休憩終了">
+    </div>
+</div>
+@endsection('main')

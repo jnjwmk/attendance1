@@ -15,3 +15,26 @@ nav {
     margin-right: 30px;
 }
 
+table {
+    width: 80%;
+    height: 60%;
+    margin-top: 120px;
+    padding-left: 30px;
+    border-top: 1px solid black;
+}
+th {
+    padding: 30px;
+}
+
+tbody{
+    text-align: center ;
+    border-top: 1px solid black;
+}
+
+tr{
+
+}
+td {
+    border-top: 1px solid black;
+    padding: 30px;
+}
