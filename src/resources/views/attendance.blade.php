@@ -46,6 +46,9 @@
             <td>
                 {{ $attendance->work_end_time}}
             </td>
+            <td>
+                {{ $totalWorkMinutes->total_break_minutes}}
+            </td>
             @endforeach
     </tbody>
 </table>
