@@ -13,12 +13,12 @@ class AttendanceController extends Controller
     public function showAttendance()
     {
         $attendances = Attendance::all();
-        return view('attendance' , compact('attendances'));
+        return view('attendance' ,compact('attendances'));
     }
 
     public function sumAttendance()
     {
-        $attendances = Attendance::with('breaks')->get();
+        $attendances = Attendance::with('employee','breaks')->get();
 
         $attendances = $attendances->map(function($attendance){
             $workStart = Carbon::parse($attendance->work_start_time);
@@ -40,6 +40,8 @@ class AttendanceController extends Controller
                 'actual_work_minutes' => $actualWorkMinutes,
             ];
         });
+
+
 
         return view('attendance' , compact('attendances'));
     }
