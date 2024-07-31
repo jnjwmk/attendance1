@@ -12,13 +12,22 @@ class AttendanceController extends Controller
     // 勤怠画面表示
     public function showAttendance()
     {
-        $attendances = Attendance::all();
+        $attendances = Attendance::paginate(5);
         return view('attendance' ,compact('attendances'));
     }
 
     public function sumAttendance()
     {
-        $attendances = Attendance::with('employee','breaks')->get();
+        $attendances = Attendance::with('employee')->paginate(5);
+
+        foreach ($attendances as $attendance){
+            if ($attendance->employee)
+                {
+                    $employeeName[] = $attendance->employee->name;
+                }
+        }
+
+
 
         $attendances = $attendances->map(function($attendance){
             $workStart = Carbon::parse($attendance->work_start_time);
@@ -41,9 +50,7 @@ class AttendanceController extends Controller
             ];
         });
 
-
-
-        return view('attendance' , compact('attendances'));
+        return view('attendance' , compact('attendances','employeeName'));
     }
 
 
