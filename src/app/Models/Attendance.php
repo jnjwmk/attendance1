@@ -26,19 +26,23 @@ class Attendance extends Model
 
     public function totalWorkMinutes()
     {
-        $attendances = $attendances->map(
-            function ($attendance) {
-                $workStart = Carbon::parse($attendance->work_start_time);
-                $workEnd = Carbon::parse($attendance->work_end_time);
 
-                $totalWorkMinutes = $workStart->diffInMinutes($workEnd);
-        });
+        $workStart = Carbon::parse($this->work_start_time);
+        $workEnd = Carbon::parse($this->work_end_time);
 
+        $totalWorkMinutes = $workStart->diffInMinutes($workEnd);
+
+        return $totalWorkMinutes;
 
     }
+    public function totalBreakMinutes()
+    {
+        $totalBreakMinutes = $this->breaks->sum(function ($break) {
+            $breakStart = Carbon::parse($break->break_start_time);
+            $breakEnd = Carbon::parse($break->break_end_time);
+            return $breakStart->diffInMinutes($breakEnd);
+        });
 
-
-
-
-
+        return $totalBreakMinutes;
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attendance;
+use App\Models\Breaks;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon
 ;
@@ -16,47 +17,52 @@ class AttendanceController extends Controller
         return view('attendance' ,compact('attendances'));
     }
 
-    public function sumAttendance()
-    {
-        $attendances = Attendance::with('employee')->paginate(5);
-
-        foreach ($attendances as $attendance){
-            if ($attendance->employee)
-                {
-                    $employeeName[] = $attendance->employee->name;
-                }
-        }
-
-
-
-        $attendances = $attendances->map(function($attendance){
-            $workStart = Carbon::parse($attendance->work_start_time);
-            $workEnd = Carbon::parse($attendance->work_end_time);
-
-            $totalWorkMinutes = $workStart->diffInMinutes($workEnd);
-
-            $totalBreakMinutes = $attendance->breaks->sum(function($break){
-                $breakStart = Carbon::parse($break->break_start_time);
-                $breakEnd = Carbon::parse($break->break_end_time);
-                return $breakStart->diffInMinutes($breakEnd);
-            });
-
-            $actualWorkMinutes = $totalWorkMinutes - $totalBreakMinutes;
-
-            return [
-                'total_work_minutes' => $totalWorkMinutes,
-                'total_break_minutes' => $totalBreakMinutes,
-                'actual_work_minutes' => $actualWorkMinutes,
-            ];
-        });
-
-        return view('attendance' , compact('attendances','employeeName'));
-    }
-
-
     // 打刻画面表示
     public function showStamp()
     {
         return view('stamp');
+    }
+
+    // 勤務時間追加
+    public function checkIn ()
+    {
+
+        $checkIn = Carbon::now();
+
+        Attendance::create([
+            'work_start_time' => $checkIn,
+        ]);
+    }
+
+    //退勤時間追加
+    public function checkOut ()
+    {
+
+        $checkOut = Carbon::now();
+
+        Attendance::create([
+            'work_end_time' => $checkOut,
+        ]);
+    }
+
+    //休憩開始時間追加
+    public function breakStart ()
+    {
+        $breakStart = Carbon::now();
+
+        Breaks::create([
+            'break_start_time' => $breakStart,
+
+        ]);
+    }
+
+    // 休憩終了時間追加
+    public function breakEnd ()
+    {
+        $breakEnd = Carbon::now();
+
+        Breaks::create([
+            'break_end_time' => $breakEnd,
+        ]);
     }
 }

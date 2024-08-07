@@ -14,8 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[AttendanceController::class,'showStamp']);
-
-// Route::get('/attendance',[AttendanceController::class,'showAttendance']);
-
-Route::get('/attendance',[AttendanceController::class, 'sumAttendance']);
+Route::get('/', [AttendanceController::class, 'showStamp']);
+Route::get('/attendance', [AttendanceController::class, 'showAttendance']);
+Route::post('/', [AttendanceController::class, 'checkIn']);

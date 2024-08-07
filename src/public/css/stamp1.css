@@ -31,15 +31,17 @@ nav {
     padding: 10px 0px;
 }
 
-.attendance-stamp {
-    width: 700px;
-    height: 400px;
+.attendance-stamp,
+.stamp-form {
+    align-items: center;
     display: grid;
     grid-template-columns: repeat(2,auto);
     gap: 20px;
 }
 
-.attendance-stamp__item {
+.attendance-stamp__btn {
+    width: 400px;
+    height: 220px;
     background-color: #fff;
     border: none;
     border-radius: 5px;
