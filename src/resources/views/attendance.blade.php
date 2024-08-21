@@ -38,7 +38,7 @@
         @foreach( $attendances as $attendance)
         <tr>
             <td>
-                {{ $attendance -> employee->name}}
+                {{ $attendance -> users}}
             </td>
             <td>
                 {{ $attendance->work_start_time}}

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AttendanceController;
+use App\Models\Attendance;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,3 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [AttendanceController::class, 'showStamp']);
 Route::get('/attendance', [AttendanceController::class, 'showAttendance']);
 Route::post('/', [AttendanceController::class, 'checkIn']);
+Route::post('/',[AttendanceController::class,'checkOut']);
+Route::post('/',[AttendanceController::class,'breakStart']);
+Route::post('/',[AttendanceController::class,'breakEnd']);

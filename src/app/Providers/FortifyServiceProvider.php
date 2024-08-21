@@ -38,6 +38,7 @@ class FortifyServiceProvider extends ServiceProvider
         //ログイン画面表示
         Fortify::loginView(function () {
             return view('auth.login');
+
         });
 
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
