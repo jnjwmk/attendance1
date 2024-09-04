@@ -17,9 +17,10 @@
 @endsection('nav')
 
 @section('main')
-<div>
-
-    <input class="attendance-date">
+<div class="date-picker">
+    <a class="arrow">&larr;</a>
+    <input class=" date-display" type="hidden" id="dateInput">
+    <a class="arrow">&rarr;</a>
 
 </div>
 

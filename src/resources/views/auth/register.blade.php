@@ -12,28 +12,31 @@
         <form class="register-form__form" action="/register" method="post">
             @csrf
             <div class="register-form__group">
-                <input class="register-form__input" type="text" name="name" value="{{ old ('name')}}" placeholder="名前"></input>
+                <input class="register-form__input" type="text" name="name" value="{{ old ('name')}}"
+                    placeholder="名前"></input>
                 @error ('name')
                 {{ $message}}
                 @enderror
             </div>
 
             <div class="register-form__group">
-                <input class="register-form__input" type="text" name="email" value="{{ old ('email')}}" placeholder="メールアドレス"></input>
+                <input class="register-form__input" type="text" name="email" value="{{ old ('email')}}"
+                    placeholder="メールアドレス"></input>
                 @error ('email')
                 {{ $message}}
                 @enderror
             </div>
 
             <div class="register-form__group">
-                <input class="register-form__input" type="text" name="password" placeholder="パスワード"></input>
+                <input class="register-form__input" type="password" name="password" placeholder="パスワード"></input>
                 @error ('password')
                 {{ $message}}
                 @enderror
             </div>
 
             <div class="register-form__group">
-                <input class="register-form__input" type="text" name="confirm-password" placeholder="確認用パスワード"></input>
+                <input class="register-form__input" type="password" name="password_confirmation"
+                    placeholder="確認用パスワード"></input>
             </div>
 
             <div class="register-form__group">

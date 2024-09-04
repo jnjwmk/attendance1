@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon
 ;
 
+
 class AttendanceController extends Controller
 {
     // 勤怠画面表示
@@ -32,11 +33,12 @@ class AttendanceController extends Controller
         Attendance::create([
             'work_start_time' => $checkIn,
             'work_end_time' => null,
-            'user_id' => 1,
+            'user_id' => $userId,
             'date' => $checkIn,
         ]);
 
         return redirect('/');
+
     }
 
     //退勤時間追加
@@ -45,11 +47,8 @@ class AttendanceController extends Controller
         $userId = auth()->id();
         $checkOut = Carbon::now();
 
-        Attendance::create([
-            'work_start_time' => null,
+        Attendance::find(4)->update([
             'work_end_time' => $checkOut,
-            'user_id' => 1,
-            'date' => $checkOut
         ]);
 
         return redirect('/');
@@ -59,15 +58,15 @@ class AttendanceController extends Controller
     public function breakStart ()
     {
         $userId = auth()->id();
-        $attendanceId = Attendance::where('user_id', $userId)->whereNull('work_end_time')->first();
+        $attendance= Attendance::where('user_id', $userId)->whereNull('work_end_time')->first();
 
-        if ($attendanceId) {
+        if ($attendance) {
             $breakStart = Carbon::now();
 
             Breaks::create([
                 'break_start_time' => $breakStart,
                 'break_end_time' => null,
-                'attendance_id' => $attendanceId->id,
+                'attendance_id' => $attendance->id,
 
             ]);
 
@@ -98,5 +97,24 @@ class AttendanceController extends Controller
         }
 
         return redirect('/');
+    }
+
+    // 日付の取得
+    public function datePicker (Request $request)
+    {
+        $selectedDate = $request->input('date', Carbon::today()->toDateString());
+
+        $date = Carbon::parse($selectedDate);
+        $previousDate = $date->copy()->subDay()->toDateString();
+        $nextDate = $date->copy()->addDay()->toDateString();
+
+        $attendances = Attendance::whereDate('created_at' , $selectedDate)->get();
+
+        return view('attendance',[
+            'attendances'=> $attendances,
+            'selectedDate'=> $selectedDate,
+            'previousDate' => $previousDate,
+            'nextDate' => $nextDate,
+        ]);
     }
 }
