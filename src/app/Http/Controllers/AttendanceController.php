@@ -14,7 +14,7 @@ class AttendanceController extends Controller
     // 勤怠画面表示
     public function showAttendance()
     {
-        $attendances = Attendance::paginate(5);
+        $attendances = Attendance::with('user')->paginate(5);
         return view('attendance' ,compact('attendances'));
     }
 
@@ -102,13 +102,19 @@ class AttendanceController extends Controller
     // 日付の取得
     public function datePicker (Request $request)
     {
-        $selectedDate = $request->input('date', Carbon::today()->toDateString());
+        //クエリパラメータから日付を取得
+        $selectedDate = $request->query('date', Carbon::today()->toDateString());
+
+        dd($request->query('date'));
+
 
         $date = Carbon::parse($selectedDate);
         $previousDate = $date->copy()->subDay()->toDateString();
         $nextDate = $date->copy()->addDay()->toDateString();
 
         $attendances = Attendance::whereDate('created_at' , $selectedDate)->get();
+
+
 
         return view('attendance',[
             'attendances'=> $attendances,

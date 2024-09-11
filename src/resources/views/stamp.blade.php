@@ -20,7 +20,7 @@
 <div class="attendance">
 
     <div class="name-message">
-        <h2> {{ auth()->user()->name}} さんお疲れ様です！</h2>
+        <h2> {{ auth()->user()->name }} さんお疲れ様です！</h2>
     </div>
 
     <div class="attendance-stamp">

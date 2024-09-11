@@ -18,9 +18,11 @@
 
 @section('main')
 <div class="date-picker">
-    <a class="arrow">&larr;</a>
-    <input class=" date-display" type="hidden" id="dateInput">
-    <a class="arrow">&rarr;</a>
+    <a class="arrow" href="{{ url ('/attendance?date=' . $previousDate) }}">&larr;</a>
+
+    <input class=" date-display" type="hidden" id="dateInput" name="date" value="{{ $selectedDate }}">
+
+    <a class="arrow" href="{{ url ('/attendance?date=' . $nextDate) }}">&rarr;</a>
 
 </div>
 
@@ -39,8 +41,7 @@
         @foreach( $attendances as $attendance)
         <tr>
             <td>
-                {{ $attendance -> users}}
-            </td>
+                {{ $attendance -> user -> name}} </td>
             <td>
                 {{ $attendance->work_start_time}}
             </td>
