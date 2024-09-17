@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/attendance.css') }}">
+<link rel="stylesheet" href="{{ asset('css/attendance1.css') }}">
 @endsection
 
 @section('nav')
@@ -49,7 +49,7 @@
                 {{ $attendance->work_end_time}}
             </td>
             <td>
-                {{ $attendance->totalBreakMinutes() }}
+                {{ $attendance->totalBreakSeconds() }}
             </td>
             <td>
                 {{ $attendance->totalWorkMinutes() }}

@@ -47,7 +47,7 @@ class AttendanceController extends Controller
         $userId = auth()->id();
         $checkOut = Carbon::now();
 
-        Attendance::find(4)->update([
+        Attendance::where('user_id',$userId)->update([
             'work_end_time' => $checkOut,
         ]);
 
@@ -105,16 +105,11 @@ class AttendanceController extends Controller
         //クエリパラメータから日付を取得
         $selectedDate = $request->query('date', Carbon::today()->toDateString());
 
-        dd($request->query('date'));
-
-
         $date = Carbon::parse($selectedDate);
         $previousDate = $date->copy()->subDay()->toDateString();
         $nextDate = $date->copy()->addDay()->toDateString();
 
-        $attendances = Attendance::whereDate('created_at' , $selectedDate)->get();
-
-
+        $attendances = Attendance::whereDate('date' , $selectedDate)->get();
 
         return view('attendance',[
             'attendances'=> $attendances,
@@ -122,5 +117,7 @@ class AttendanceController extends Controller
             'previousDate' => $previousDate,
             'nextDate' => $nextDate,
         ]);
+
+        dd($selectedDate);
     }
 }

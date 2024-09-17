@@ -9,8 +9,8 @@
     <ul>
         <li>
             <a class="header-nav" href="/">ホーム</a>
-            <a class="header-nav" href="/">日付一覧</a>
-            <a class="header-nav" href="/">ログアウト</a>
+            <a class="header-nav" href="/attendance">日付一覧</a>
+            <a class="header-nav" href="/login">ログアウト</a>
         </li>
     </ul>
 </nav>

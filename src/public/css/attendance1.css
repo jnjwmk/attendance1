@@ -15,6 +15,10 @@ nav {
     margin-right: 30px;
 }
 
+.date-picker{
+    align-items: center;
+}
+
 table {
     width: 80%;
     height: 60%;

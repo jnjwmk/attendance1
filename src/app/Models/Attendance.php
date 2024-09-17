@@ -30,19 +30,24 @@ class Attendance extends Model
         $workStart = Carbon::parse($this->work_start_time);
         $workEnd = Carbon::parse($this->work_end_time);
 
-        $totalWorkMinutes = $workStart->diffInMinutes($workEnd);
+        $totalWork = $workStart->diff($workEnd);
+
+        $totalWorkMinutes = sprintf('%02d:%02d:%02d', $totalWork->h, $totalWork->i, $totalWork->s);
 
         return $totalWorkMinutes;
 
     }
-    public function totalBreakMinutes()
+    public function totalBreakSeconds()
     {
-        $totalBreakMinutes = $this->breaks->sum(function ($break) {
+        $totalBreakSeconds = $this->breaks->sum(function ($break) {
             $breakStart = Carbon::parse($break->break_start_time);
             $breakEnd = Carbon::parse($break->break_end_time);
-            return $breakStart->diffInMinutes($breakEnd);
+
+            return $breakStart->diffInSeconds($breakEnd);
         });
 
-        return $totalBreakMinutes;
+        $totalBreakTime = Carbon::createFromTime(0,0,0)->addSeconds($totalBreakSeconds);
+
+        return $totalBreakTime->format('H:i:s');
     }
 }
