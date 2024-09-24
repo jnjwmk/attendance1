@@ -15,15 +15,33 @@ nav {
     margin-right: 30px;
 }
 
-.date-picker{
-    align-items: center;
+.attendance-main{
+    width: 70vw;
+    height: 70vh;
 }
 
+.date-picker {
+    margin-top: 50px;
+    text-align: center;
+}
+
+/* 日付前後の矢印 */
+.arrow {
+    text-decoration: none;
+}
+
+.date-display {
+    border: none;
+    outline: none;
+    background-color: #eeeded55;
+    text-align: center;
+    font-size: 20px;
+}
+
+
 table {
-    width: 80%;
-    height: 60%;
-    margin-top: 120px;
-    padding-left: 30px;
+    width: 100%;
+    margin-top: 50px;
     border-top: 1px solid black;
 }
 th {
@@ -35,9 +53,6 @@ tbody{
     border-top: 1px solid black;
 }
 
-tr{
-
-}
 td {
     border-top: 1px solid black;
     padding: 30px;

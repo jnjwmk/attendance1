@@ -8,14 +8,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon
 ;
 
-
 class AttendanceController extends Controller
 {
     // 勤怠画面表示
     public function showAttendance()
     {
         $attendances = Attendance::with('user')->paginate(5);
+
+        // dd($attendances);
+
         return view('attendance' ,compact('attendances'));
+
+
     }
 
     // 打刻画面表示

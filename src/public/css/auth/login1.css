@@ -1,3 +1,11 @@
+.login-form__heading, .content__heading {
+    text-align: center;
+}
+
+.login-form__inner {
+    margin: auto 0;
+}
+
 .login-form__group {
     display: flex;
     justify-content: center;
@@ -30,8 +38,7 @@
 
 .login-form__register {
     width: 350px;
-    margin-top: 40px;
-    justify-content: center;
+    margin-top: 50px;
 }
 
 p {
