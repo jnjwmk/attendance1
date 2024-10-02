@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/attendance7.css') }}">
+<link rel="stylesheet" href="{{ asset('css/attendance1.css') }}">
 @endsection
 
 @section('nav')
@@ -10,7 +10,7 @@
         <li>
             <a class="header-nav" href="/">ホーム</a>
             <a class="header-nav" href="/">日付一覧</a>
-            <a class="header-nav" href="/login">ログアウト</a>
+            <a class="header-nav" href="{{ route('logout') }}">ログアウト</a>
         </li>
     </ul>
 </nav>
@@ -19,11 +19,11 @@
 @section('main')
 <div class="attendance-main">
     <div class="date-picker">
-        <a class="arrow" href="{{ url ('/attendance?date=' . $previousDate) }}">&larr;</a>
+        <a class="arrow arrow-left" href="{{ url ('/attendance?date=' . $previousDate) }}"></a>
 
-        <input class=" date-display" type="text" id="dateInput" name="date" value="{{ $selectedDate }}">
+        <span> {{ $selectedDate }}</span>
 
-        <a class="arrow" href="{{ url ('/attendance?date=' . $nextDate) }}">&rarr;</a>
+        <a class="arrow arrow-right" href="{{ url ('/attendance?date=' . $nextDate) }}"></a>
     </div>
 
     <table>
@@ -57,10 +57,6 @@
                 @endforeach
         </tbody>
     </table>
-
-    {{ $attendances -> links() }}
-
-
-
+    {{ $attendances -> links('vendor/pagination/custom') }}
 </div>
 @endsection

@@ -3,6 +3,11 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\User;
+use App\Models\Attendance;
+use App\Models\Breaks;
+use Faker\Factory as Faker;
+use Faker\Factory;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,8 +18,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(EmployeesTableSeeder::class);
-        $this->call(BreaksTableSeeder::class);
-        $this->call(AttendancesTableSeeder::class);
+        User::factory(50)->has
+        (Attendance::factory(50)->has(Breaks::factory(50) ))->create();
+
     }
 }

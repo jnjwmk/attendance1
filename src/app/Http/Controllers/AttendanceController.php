@@ -10,18 +10,6 @@ use Illuminate\Support\Carbon
 
 class AttendanceController extends Controller
 {
-    // 勤怠画面表示
-    public function showAttendance()
-    {
-        $attendances = Attendance::with('user')->paginate(5);
-
-        // dd($attendances);
-
-        return view('attendance' ,compact('attendances'));
-
-
-    }
-
     // 打刻画面表示
     public function showStamp()
     {
@@ -108,12 +96,13 @@ class AttendanceController extends Controller
     {
         //クエリパラメータから日付を取得
         $selectedDate = $request->query('date', Carbon::today()->toDateString());
+        // dd($selectedDate);
 
         $date = Carbon::parse($selectedDate);
         $previousDate = $date->copy()->subDay()->toDateString();
         $nextDate = $date->copy()->addDay()->toDateString();
 
-        $attendances = Attendance::whereDate('date' , $selectedDate)->get();
+        $attendances = Attendance::whereDate('date' , $selectedDate)->paginate(5)->withQueryString();
 
         return view('attendance',[
             'attendances'=> $attendances,
@@ -122,6 +111,5 @@ class AttendanceController extends Controller
             'nextDate' => $nextDate,
         ]);
 
-        dd($selectedDate);
     }
 }

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atte</title>
     <link rel="stylesheet" href="{{ asset('css/reset.css')}}">
-    <link rel="stylesheet" href="{{ asset('css/common1.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/common.css')}}">
     @yield('css')
 </head>
 
@@ -22,7 +22,7 @@
         </main>
 
         <footer class="footer">
-            <small>Atte,inc.</small>
+            <small>Atte, inc.</small>
         </footer>
     </div>
 </body>

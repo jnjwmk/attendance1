@@ -1,0 +1,107 @@
+nav {
+    margin-top: 15px;
+    margin-right: 50px;
+}
+
+
+.header-nav {
+    text-decoration: none;
+    list-style: none;
+    color: black;
+}
+
+.header-nav:nth-of-type(1),
+.header-nav:nth-of-type(2) {
+    margin-right: 30px;
+}
+
+.attendance-main{
+    width: 100%;
+    height: 100%;
+}
+
+.date-picker {
+    margin-top: 50px;
+    text-align: center;
+}
+
+/* 日付前後の矢印 */
+.arrow {
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    padding: 0 16px 0 16px;
+    color: hotpink;
+    vertical-align: middle;
+    font-size: 15px;
+}
+.arrow::before,
+.arrow::after{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    content: "";
+    vertical-align: middle;
+}
+.arrow-left::before{
+    width: 22px;
+    height: 18px;
+    background: #fff;
+    border: 1px solid #0381ff;
+}
+.arrow-left::after{
+    right: 10px;
+    width: 7px;
+    height: 7px;
+    border-bottom: 1px solid #0381ff;
+    border-left: 1px solid #0381ff;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.arrow-right::before{
+    width: 22px;
+    height: 18px;
+    background: #fff;
+    border:1px solid #0381ff;
+    left: 10px;
+}
+.arrow-right::after{
+    left: 15px;
+    width: 7px;
+    height: 7px;
+    border-top: 1px solid #0381ff;
+    border-right: 1px solid #0381ff;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.date-display {
+    border: none;
+    outline: none;
+    background-color: #eeeded55;
+    text-align: center;
+    font-size: 20px;
+}
+
+table {
+    width: 80%;
+    margin-top: 50px;
+    border-top: 1px solid black;
+    margin-left: 150px;
+}
+th {
+    padding: 30px;
+}
+
+tbody{
+    text-align: center ;
+    border-top: 1px solid black;
+}
+
+td {
+    border-top: 1px solid black;
+    padding: 30px;
+}
+

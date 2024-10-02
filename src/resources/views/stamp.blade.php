@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/stamp1.css') }}">
+<link rel="stylesheet" href="{{ asset('css/stamp.css') }}">
 @endsection('css')
 
 @section('nav')
@@ -10,7 +10,7 @@
         <li>
             <a class="header-nav" href="/">ホーム</a>
             <a class="header-nav" href="/attendance">日付一覧</a>
-            <a class="header-nav" href="/login">ログアウト</a>
+            <a class="header-nav" href="{{ route ('logout') }}">ログアウト</a>
         </li>
     </ul>
 </nav>
